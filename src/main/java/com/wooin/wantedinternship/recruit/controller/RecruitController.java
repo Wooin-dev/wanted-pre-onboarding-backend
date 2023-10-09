@@ -46,10 +46,10 @@ public class RecruitController {
     @Operation(summary = "채용공고 생성")
     @PostMapping("/recruitments")
     public ResponseEntity<RecruitResponseDto> createRecruit(
-            @RequestBody RecruitRequestDto requestDto,
-            Long companyId //todo 이후에 회사정보를 유저정보에서 가져오는 식으로 변경 필요
+            @RequestBody RecruitRequestDto requestDto
+            //@RequestBody Long companyId //todo 이후에 회사정보를 유저정보에서 가져오는 식으로 변경 필요
     ) {
-        RecruitResponseDto responseDto = recruitService.createRecruit(requestDto, companyId);
+        RecruitResponseDto responseDto = recruitService.createRecruit(requestDto);
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 

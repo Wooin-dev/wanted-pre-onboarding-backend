@@ -41,9 +41,9 @@ public class RecruitService {
     }
 
     @Transactional
-    public RecruitResponseDto createRecruit(RecruitRequestDto requestDto, Long companyId) {
+    public RecruitResponseDto createRecruit(RecruitRequestDto requestDto) {
 
-        Company foundCompany = findCompanyById(companyId);
+        Company foundCompany = findCompanyById(requestDto.getCompanyId());
 
         Recruit createdRecruit = new Recruit(requestDto, foundCompany);
         Recruit savedRecruit = recruitRepository.save(createdRecruit);

@@ -10,4 +10,5 @@ public class RecruitRequestDto {
     private Integer reward;
     private String contents;
     private String skill;
+    private Long companyId;
 }
