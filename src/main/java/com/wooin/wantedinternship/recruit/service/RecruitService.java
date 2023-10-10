@@ -27,17 +27,17 @@ public class RecruitService {
 
     //메소드
     @Transactional(readOnly = true)
-    public RecruitResponseDto selectRecruitOne(Long recruitId) {
-
-        Recruit selectedRecruit = findRecruitById(recruitId);
-        return new RecruitResponseDto(selectedRecruit);
-    }
-
-    @Transactional(readOnly = true)
-    public List<RecruitResponseDto> selectRecruitList() {
+    public List<RecruitResponseDto> getRecruitList() {
 
         List<Recruit> recruits = recruitRepository.findAll();
         return recruits.stream().map(RecruitResponseDto::new).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public RecruitResponseDto getRecruitOne(Long recruitId) {
+
+        Recruit selectedRecruit = findRecruitById(recruitId);
+        return new RecruitResponseDto(selectedRecruit);
     }
 
     @Transactional

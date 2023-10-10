@@ -28,18 +28,18 @@ public class RecruitController {
     //메소드
     @Operation(summary = "채용공고 목록 조회")
     @GetMapping("/recruitments")
-    public ResponseEntity<List<RecruitResponseDto>> selectRecruitList() {
+    public ResponseEntity<List<RecruitResponseDto>> getRecruitList() {
 
-        List<RecruitResponseDto> recruitResponseDtos = recruitService.selectRecruitList();
+        List<RecruitResponseDto> recruitResponseDtos = recruitService.getRecruitList();
         return new ResponseEntity<>(recruitResponseDtos, HttpStatus.OK);
     }
 
     @Operation(summary = "채용공고 단건 조회")
     @GetMapping("/recruitments/{recruitId}")
-    public ResponseEntity<RecruitResponseDto> selectRecruitOne(
+    public ResponseEntity<RecruitResponseDto> getRecruitOne(
             @PathVariable("recruitId") Long recruitId
     ) {
-        RecruitResponseDto responseDto = recruitService.selectRecruitOne(recruitId);
+        RecruitResponseDto responseDto = recruitService.getRecruitOne(recruitId);
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 

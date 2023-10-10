@@ -23,22 +23,12 @@ public class CompanyService {
 
 
     //메소드
-    @Transactional
-    public CompanyResponseDto createCompany(CompanyRequestDto requestDto) {
-
-        Company createdCompany = new Company(requestDto);
-        Company savedCompany = companyRepository.save(createdCompany);
-
-        return new CompanyResponseDto(savedCompany);
-    }
-
     @Transactional(readOnly = true)
     public List<CompanyResponseDto> getCompanyList() {
 
         List<Company> companies = companyRepository.findAll();
         return companies.stream().map(CompanyResponseDto::new).toList();
     }
-
 
     @Transactional(readOnly = true)
     public CompanyResponseDto getCompanyOne(Long companyId) {
@@ -47,6 +37,15 @@ public class CompanyService {
         return new CompanyResponseDto(foundCompany);
     }
 
+
+    @Transactional
+    public CompanyResponseDto createCompany(CompanyRequestDto requestDto) {
+
+        Company createdCompany = new Company(requestDto);
+        Company savedCompany = companyRepository.save(createdCompany);
+
+        return new CompanyResponseDto(savedCompany);
+    }
 
     @Transactional
     public CompanyResponseDto modifyCompany(Long companyId, CompanyRequestDto requestDto) {
