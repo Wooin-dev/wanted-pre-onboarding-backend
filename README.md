@@ -1,11 +1,15 @@
 # wanted-pre-onboarding-backend
 원티드 프리온보딩 인턴쉽 선발과제
+<br><br>
 
-
+## Api 명세
+[Postman 링크](https://documenter.getpostman.com/view/27928327/2s9YJhwKds)
+<br><br>
 
 ## ERD구성
 
-<img src = "https://github.com/Wooin-dev/wanted-pre-onboarding-backend/assets/133616377/94bf3a5c-a45f-4467-af27-643efc66b652" width = "80%" height = "80%"> <br>
+![wanted internship - Page 1 (2)](https://github.com/Wooin-dev/wanted-pre-onboarding-backend/assets/133616377/ede3bb96-956f-45d2-b9e0-4ce97b188d64)
+
 요구사항의 기본적인 것만 우선 포함하게 설계했습니다. (23.10.07)
 <br><br>
 
