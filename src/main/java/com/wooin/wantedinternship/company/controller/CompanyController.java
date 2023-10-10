@@ -6,6 +6,7 @@ import com.wooin.wantedinternship.company.dto.CompanyRequestDto;
 import com.wooin.wantedinternship.company.dto.CompanyResponseDto;
 import com.wooin.wantedinternship.company.service.CompanyService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@Tag(name = "회사정보 API", description = "회사정보 생성, 조회, 수정, 삭제 기능.")
 public class CompanyController {
     //멤버 선언
     private final CompanyService companyService;
