@@ -29,4 +29,12 @@ public class Company extends Timestamped {
         this.region = requestDto.getRegion();
         this.national = requestDto.getNational();
     }
+
+    public Company update(CompanyRequestDto requestDto) {
+        this.name = requestDto.getName();
+        this.region = requestDto.getRegion();
+        this.national = requestDto.getNational();
+
+        return this;
+    }
 }

@@ -53,7 +53,7 @@ public class RecruitController {
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
-    @Operation(summary = "채용공고 수정", description = "모든 채용공고 정보를 포함하여 요청해야 한다. 채용공고 수정 기능")
+    @Operation(summary = "채용공고 수정", description = "채용공고 수정 기능. 모든 채용공고 정보를 포함하여 요청해야 한다.")
     @PutMapping("/recruitments/{recruitId}")
     public ResponseEntity<RecruitResponseDto> modifyRecruit(
             @RequestBody RecruitRequestDto requestDto,

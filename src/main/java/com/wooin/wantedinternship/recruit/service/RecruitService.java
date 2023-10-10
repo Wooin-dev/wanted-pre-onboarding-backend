@@ -2,7 +2,7 @@ package com.wooin.wantedinternship.recruit.service;
 
 import com.wooin.wantedinternship.common.exception.NotFoundException;
 import com.wooin.wantedinternship.company.entity.Company;
-import com.wooin.wantedinternship.company.repository.CompanyRepository;
+import com.wooin.wantedinternship.company.service.CompanyService;
 import com.wooin.wantedinternship.recruit.dto.RecruitRequestDto;
 import com.wooin.wantedinternship.recruit.dto.RecruitResponseDto;
 import com.wooin.wantedinternship.recruit.entity.Recruit;
@@ -16,12 +16,12 @@ import java.util.List;
 public class RecruitService {
     //멤버선언
     private final RecruitRepository recruitRepository;
-    private final CompanyRepository companyRepository;
+    private final CompanyService companyService;
 
     //생성자. 빈 주입
-    public RecruitService(RecruitRepository recruitRepository, CompanyRepository companyRepository) {
+    public RecruitService(RecruitRepository recruitRepository, CompanyService companyService) {
         this.recruitRepository = recruitRepository;
-        this.companyRepository = companyRepository;
+        this.companyService = companyService;
     }
 
 
@@ -29,7 +29,7 @@ public class RecruitService {
     @Transactional(readOnly = true)
     public RecruitResponseDto selectRecruitOne(Long recruitId) {
 
-        Recruit selectedRecruit = selectRecruitById(recruitId);
+        Recruit selectedRecruit = findRecruitById(recruitId);
         return new RecruitResponseDto(selectedRecruit);
     }
 
@@ -43,7 +43,7 @@ public class RecruitService {
     @Transactional
     public RecruitResponseDto createRecruit(RecruitRequestDto requestDto) {
 
-        Company foundCompany = findCompanyById(requestDto.getCompanyId());
+        Company foundCompany = companyService.findCompanyById(requestDto.getCompanyId());
 
         Recruit createdRecruit = new Recruit(requestDto, foundCompany);
         Recruit savedRecruit = recruitRepository.save(createdRecruit);
@@ -66,18 +66,7 @@ public class RecruitService {
     }
 
 
-
-    //private 메소드
-
-    private Recruit selectRecruitById(Long recruitId) {
-        return recruitRepository.findById(recruitId).orElseThrow(() -> new NotFoundException("해당 채용공고를 찾을 수 없습니다."));
-    }
-
-    private Company findCompanyById(Long companyId) {
-        return companyRepository.findById(companyId).orElseThrow(() -> new NotFoundException("회사 정보를 찾을 수 없습니다."));
-    }
-
-    private Recruit findRecruitById(Long recruitId) {
+    public Recruit findRecruitById(Long recruitId) {
         return recruitRepository.findById(recruitId).orElseThrow(() -> new NotFoundException("채용공고를 찾을 수 없습니다."));
     }
 }
