@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Apply extends Timestamped {
 
     @Id
-    @Column(name = "apply_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     //연관관계 매핑
