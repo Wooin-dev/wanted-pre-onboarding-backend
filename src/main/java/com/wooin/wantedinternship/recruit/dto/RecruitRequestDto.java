@@ -7,8 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public class RecruitRequestDto {
     private String position;
-    private Integer reward;
     private String contents;
+    private Integer reward;
     private String skill;
     private Long companyId;
 }
