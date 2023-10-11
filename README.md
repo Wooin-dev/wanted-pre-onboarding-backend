@@ -8,7 +8,7 @@
 
 ## ERD구성
 
-![wanted internship - Page 1 (2)](https://github.com/Wooin-dev/wanted-pre-onboarding-backend/assets/133616377/ede3bb96-956f-45d2-b9e0-4ce97b188d64)
+![wanted internship - Page 1 (4)](https://github.com/Wooin-dev/wanted-pre-onboarding-backend/assets/133616377/45a013c0-f0d1-4107-8c73-62a451e388aa)
 
 요구사항의 기본적인 것만 우선 포함하게 설계했습니다. (23.10.07)
 <br><br>
