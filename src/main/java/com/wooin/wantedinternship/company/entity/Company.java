@@ -2,10 +2,14 @@ package com.wooin.wantedinternship.company.entity;
 
 import com.wooin.wantedinternship.common.entity.Timestamped;
 import com.wooin.wantedinternship.company.dto.CompanyRequestDto;
+import com.wooin.wantedinternship.recruit.entity.Recruit;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,6 +25,10 @@ public class Company extends Timestamped {
     private String region;
     private String national;
 
+
+    //양방향 매핑관계
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Recruit> recruits = new ArrayList<>();
 
 
     //생성자
