@@ -34,6 +34,9 @@ public class ApplyService {
         Recruit foundRecruit = recruitService.findRecruitById(recruitId);
         User foundUser = userService.findUserById(userId);
 
+        //중복체크
+        checkExistedApply(foundRecruit, foundUser);
+
         Apply createdApply = new Apply(foundRecruit, foundUser);
         Apply savedApply = applyRepository.save(createdApply);
 
@@ -54,4 +57,10 @@ public class ApplyService {
     }
 
 
+    //private 메소드
+    private void checkExistedApply(Recruit foundRecruit, User foundUser) {
+        if (applyRepository.existsByRecruitAndUser(foundRecruit, foundUser)){
+            throw new IllegalArgumentException("해당 채용공고에 이미 지원했습니다.");
+        }
+    }
 }
