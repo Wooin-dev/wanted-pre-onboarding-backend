@@ -1,5 +1,6 @@
 package com.wooin.wantedinternship.apply.controller;
 
+import com.wooin.wantedinternship.apply.dto.ApplyResponseDto;
 import com.wooin.wantedinternship.apply.service.ApplyService;
 import com.wooin.wantedinternship.common.dto.ApiResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
@@ -21,12 +22,12 @@ public class ApplyController {
 
     @Operation(summary = "채용공고에 지원하기")
     @GetMapping("/apply")
-    public ResponseEntity<ApiResponseDto> createApply(
+    public ResponseEntity<ApplyResponseDto> createApply(
             @RequestParam Long recruitId,
             @RequestParam Long userId
     ) {
-        applyService.createApply(recruitId, userId);
-        return new ResponseEntity<>(new ApiResponseDto(HttpStatus.OK.value(), recruitId+"번 채용공고에 지원하였습니다."), HttpStatus.OK);
+        ApplyResponseDto responseDto = applyService.createApply(recruitId, userId);
+        return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
 

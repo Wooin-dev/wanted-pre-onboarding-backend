@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Getter
 public class ApplyResponseDto {
 
+    private Long userId;
     private Long recruitId;
     private String position;
     private String skill;
@@ -16,6 +17,7 @@ public class ApplyResponseDto {
 
 
     public ApplyResponseDto(Apply apply) {
+        this.userId = apply.getUser().getId();
         this.recruitId = apply.getRecruit().getId();
         this.position = apply.getRecruit().getPosition();
         this.skill = apply.getRecruit().getSkill();
