@@ -31,6 +31,17 @@ public class ApplyController {
     }
 
 
+    @Operation(summary = "채용공고 지원 취소")
+    @DeleteMapping("/apply")
+    public ResponseEntity<ApplyResponseDto> deleteApply(
+            @RequestParam Long recruitId,
+            @RequestParam Long userId       //todo 로그인 구현 후 본인 확인 과정 추가 필요
+    ) {
+        ApplyResponseDto responseDto = applyService.deleteApply(recruitId, userId);
+        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+    }
+
+
 
 
 }

@@ -50,14 +50,28 @@ public class ApplyService {
         return new ApplyResponseDto(foundApply);
     }
 
+    @Transactional
+    public ApplyResponseDto deleteApply(Long recruitId, Long userId) {
 
-    @Transactional(readOnly = true)
+        Recruit foundRecruit = recruitService.findRecruitById(recruitId);
+        User foundUser = userService.findUserById(userId);
+
+        applyRepository.deleteByRecruitAndUser(foundRecruit, foundUser);
+
+        return null;
+    }
+
+
+
+
     public Apply findApplyById(Long applyId) {
         return applyRepository.findById(applyId).orElseThrow(()-> new NotFoundException("해당 채용지원을 찾을 수 없습니다."));
     }
 
-
     //private 메소드
+
+
+
     private void checkExistedApply(Recruit foundRecruit, User foundUser) {
         if (applyRepository.existsByRecruitAndUser(foundRecruit, foundUser)){
             throw new IllegalArgumentException("해당 채용공고에 이미 지원했습니다.");
