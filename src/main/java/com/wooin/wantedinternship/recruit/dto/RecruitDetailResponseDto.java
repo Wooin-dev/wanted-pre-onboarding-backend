@@ -21,7 +21,7 @@ public class RecruitDetailResponseDto {
     private String region;
     private String national;
 
-    private List<RecruitOnBoardResponseDto> recruitOnBoardList;
+    private List<RecruitOnBoardResponseDto> linkedRecruitList;
 
 
     //생성자
@@ -35,7 +35,7 @@ public class RecruitDetailResponseDto {
         this.region = recruit.getCompany().getRegion();
         this.national = recruit.getCompany().getNational();
 
-        this.recruitOnBoardList = recruit.getCompany().getRecruits()
+        this.linkedRecruitList = recruit.getCompany().getRecruits()
                 .stream()
                 .filter(recruitment -> !recruitment.getId().equals(recruit.getId()))
                 .map(RecruitOnBoardResponseDto::new)
